@@ -1,0 +1,12 @@
+type Query {
+    hello: String!
+    newDate: DateTime!
+    userLoggued: User
+    users: [User]
+    user(id: ID): User
+    product: Product
+    certifications: [String]
+    numbersMegaSena: [Int]
+    profile(id: ID): Profile
+    profiles: [Profile]
+    }
