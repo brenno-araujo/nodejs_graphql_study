@@ -1,17 +1,22 @@
+let id = 1;
+function proxId() {
+    return id++;
+}
+
 const profiles = [
     {
-        id: 1,
+        id: proxId(),
         name: 'admin',
     },
     {
-        id: 2,
+        id: proxId(),
         name: 'user',
     }
 ];
 
 const users = [
     {
-        id: 1,
+        id: proxId(),
         name: "brenno",
         email: "brenno@email.com",
         age: 25,
@@ -21,7 +26,7 @@ const users = [
         status : "Active"
     },
     {
-        id: 2,
+        id: proxId(),
         name: "Arthur",
         email: "zico@email.com",
         age: 25,
@@ -34,5 +39,6 @@ const users = [
 
 module.exports = {
     users,
-    profiles
+    profiles,
+    proxId
 }
