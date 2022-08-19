@@ -1,5 +1,23 @@
 const { users, profiles } = require('../data/db')
 
+function userExists(filter) {
+    if (filter.id) {
+        const userIndex = users.findIndex(user => user.id == filter.id);
+        if (userIndex === -1) {
+            throw new Error('User not found');
+        }
+        return userIndex;
+    }
+    else if (filter.email) {
+        const userIndex = users.findIndex(user => user.email == filter.email);
+
+        if (userIndex === -1) {
+            throw new Error('User not found');
+        }
+        return userIndex;
+    }   
+}
+
 module.exports = {
     hello: () => "Hello World",
         newDate: () => new Date(),
@@ -16,8 +34,12 @@ module.exports = {
         users: () => {
             return users
         },
-        user: (_, args) => {
-            return users.find(user => user.id == args.id)
+        user: (_, {filter}) => {
+            const userIndex = userExists(filter);
+            if (userIndex === -1) {
+                throw new Error('User not found');
+            }
+            return users[userIndex];
         },
         product: () => {
             return {

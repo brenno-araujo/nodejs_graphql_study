@@ -3,6 +3,11 @@ enum Status{
     Inactive
 }
 
+type Profile {
+    id: ID!
+    name: String!
+} 
+
 type User {
     id: ID!
     name: String!
@@ -14,7 +19,14 @@ type User {
     status: Status!
 }
 
-type Profile {
-    id: ID!
-    name: String!
-} 
+
+input UserInput {
+    name: String
+    email: String
+    age: Int
+}
+
+input UserFilterInput {
+    id: Int
+    email: String
+}
